@@ -37,11 +37,24 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/maps", usersRoutes(knex));
+app.use("/api/pois", usersRoutes(knex));
+
+const getUserMaps = knex('users')
+.join('maps', 'users.id', '=', 'maps.user_id')
+.select('*').where('id', req.session.user_id)
+.then(function(result) {
+return result
+})
+let knex.select
+for (let i = 0; i < )
+knex.select('map').from('books')
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
