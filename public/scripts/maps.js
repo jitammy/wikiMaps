@@ -33,6 +33,9 @@ function makeMap(mapRes){
   }
 }
 
+
+
+
 $(() => {
    var url = window.location.pathname;
    var id = url.substring(url.lastIndexOf('/') + 1);
@@ -43,6 +46,20 @@ $(() => {
   }).done((map) => {
     makeMap(map);
   });;
+
+  $(window).click((e) =>{
+    $("#poiPopup").css({left: e.pageX});
+    $("#poiPopup").css({top: e.pageY});
+    $("#poiPopup").show();
+  });
+
+
+  // $.ajax({
+  //   method: "POST",
+  //   url: "/api/pois"
+  // }).done(()=>{
+  //   console.log("successfully posted");
+  // });
 
 
 })
