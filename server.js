@@ -16,6 +16,8 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const mapsRoutes = require("./routes/maps");
+const poisRoutes = require("./routes/pois");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,11 +39,67 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
-
+app.use("/api/maps", mapsRoutes(knex));
+app.use("/api/pois", poisRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+//gets the json object of the matching ID
+app.get("/data/:map_id", (req, res) => {
+  var rendMap = {};
+  var mapID = req.params.map_id;
+  knex('maps')
+  .where({
+    id: mapID
+  })
+  .then((resMap) => {
+    if (resMap.length > 0){
+      rendMap['title'] = resMap[0].title;
+      rendMap['lattitude'] = resMap[0].lattitude;
+      rendMap['longitude'] = resMap[0].longitude;
+      rendMap['user_id'] = resMap[0].user_id;
+      rendMap['created_at'] = resMap[0].created_at;
+      rendMap['updated_at'] = resMap[0].updated_at;
+      console.log(rendMap);
+
+      knex('pois')
+      .where({
+        map_id: mapID
+      })
+      .then((resPoints) => {
+        console.log("searching POIs")
+        if(resPoints.length > 0){
+          var arrPois = [];
+          resPoints.forEach((singlePoi) => {
+            var poi = {
+              title: singlePoi.title,
+              desc: singlePoi.desc,
+              lat: singlePoi.lat,
+              lng: singlePoi.lng
+            }
+            arrPois.push(poi);
+          });
+
+          rendMap['arrPois'] = arrPois;
+          console.log(rendMap);
+        }
+        res.json(rendMap);
+
+      }).catch((error) =>{
+        res.send(error);
+      });
+
+  } else {
+    res.send("invalid map id");
+  }
+  }).catch((error) => {
+    res.send(error);
+  });
+
+});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
