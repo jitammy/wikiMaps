@@ -90,14 +90,16 @@
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown"
                         class="btn btn-outline-secondary dropdown-toggle">Register <span class="caret"></span>
                     </button>
-
+                    <div class="SuccessMessage">Please enter a valid password</div>
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/register" method="POST" class="form" role="form">
+                        <div class="userError">Can't post empty tweet</div>
+                            <form action="/register" method="POST" class="register" role="form">
                                 <div class="form-group">
-                                    <input id="nameInput" placeholder="name" class="form-control form-control-sm"
+                                    <input id="nameInput" placeholder="username" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
+                                <div class="pswrdError">Please enter a valid password</div>
                                 <div class="form-group">
                                     <input id="passwordInput" placeholder="Password"
                                         class="form-control form-control-sm" type="text" required="">
