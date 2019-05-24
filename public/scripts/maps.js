@@ -1,22 +1,23 @@
+var map;
+
 function mapInit() {
   var mapSettings = {
     center: new google.maps.LatLng(43.65432, -79.38347),
-    zoom: 10,
+    zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
-  map = new google.maps.Map(document.getElementById("map"), mapSettings);
+ map = new google.maps.Map(document.getElementById("map"), mapSettings);
 }
 
-var map;
 
 function makeMap(mapRes){
 
   var marker;
   for (var i = 0; i < mapRes.arrPois.length; i++){
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(mapRes.arrPois[i].lattitude, mapRes.arrPois[i].longitude),
-      map: map
+      position: new google.maps.LatLng(mapRes.arrPois[i].lat, mapRes.arrPois[i].lng),
+      map: map,
     });
 
 
@@ -33,8 +34,8 @@ function makeMap(mapRes){
 }
 
 $(() => {
-  var url = window.location.pathname;
-   var id = url.substring(url.lastIndexOf('/') + 1;
+   var url = window.location.pathname;
+   var id = url.substring(url.lastIndexOf('/') + 1);
 
   $.ajax({
     method: "GET",
