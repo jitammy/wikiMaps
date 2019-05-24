@@ -17,7 +17,7 @@ function makeMap(mapRes){
   for (var i = 0; i < mapRes.arrPois.length; i++){
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(mapRes.arrPois[i].lat, mapRes.arrPois[i].lng),
-      map: map,
+      map: map
     });
 
 
