@@ -15,9 +15,18 @@
 
   <body>
     <h1>Hello World!</h1>
+
     {{ partial "partials/_header.ejs" . }}
 
     <main>
+
+
+    <% include ./partials/_header %>
+
+    <main>
+        <!-- old maps here -->
+        <section class="maps"></section>
+        <section id="showonemap"></section>
 
     </main>
 

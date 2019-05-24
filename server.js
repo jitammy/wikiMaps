@@ -13,6 +13,14 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session')
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1'],
+}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -41,10 +49,13 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/maps", mapsRoutes(knex));
 app.use("/api/pois", poisRoutes(knex));
+
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  let templateVars = { user: "test"} //test cookie to make header run.
+  res.render("index", templateVars);
 });
+
 
 //gets the json object of the matching ID
 app.get("/data/:map_id", (req, res) => {
