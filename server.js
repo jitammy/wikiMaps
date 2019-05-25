@@ -50,7 +50,7 @@ app.use("/api/pois", poisRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = { user: ""} //test cookie to make header run.
+  let templateVars = { user: req.session.user_id} //test cookie to make header run.
   res.render("index", templateVars);
 });
 
