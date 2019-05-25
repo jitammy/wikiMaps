@@ -5,27 +5,6 @@ const router  = express.Router();
 const bcrypt = require('bcrypt')
 const cookieSession = require('cookie-session')
 
-
-const userExists = (username) => {
-  knex.select('name').from('users').done((users) => {
-    if (users.includes(username)) {
-      return true;
-    } else {
-      return false
-    }
-  })
-};;
-
-const getUserId = (username) => {
-  knex.select('name').from('users').done((users) => {
-    for (let i = 0; i < users.length; i ++) {
-      if (users[i].name === username) {
-        return users[i].id;
-      }
-    }
-  })
-};
-
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
