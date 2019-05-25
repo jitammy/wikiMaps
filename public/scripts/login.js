@@ -1,16 +1,18 @@
 $(document).ready(function() {
 
-  $("form.register").on("submit", function(e) {
+  $("form.login").on("submit", function(e) {
     e.preventDefault();
 
-    const $username = $('#nameInput').val();
-    const $pswrd = $('#newPasswordInput').val();
+    const $user = $('#usernameInput').val();
+    const $password = $('#passwordInput').val();
     console.log("form data:", $(this).serialize())
     $.ajax({
-      url: "/api/users/register",
+      url: "/api/users/login",
       type: "POST",
       data: $(this).serialize()
     }).done(function(data) {
     })
   })
 })
+
+
