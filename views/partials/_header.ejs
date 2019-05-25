@@ -37,7 +37,7 @@
                     <ul class="dropdown-menu list" role="menu"></ul>
                 </li>
                 <li>
-                    </form action="/api/users/logout" , method="POST">
+                    </form class="logout" action="/api/users/logout" , method="POST">
                     <button type="submit" class="btn btn-outline-secondary">Logout <span class="caret"></span></button>
                     </form>
                 </li>
@@ -55,9 +55,9 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form name="user" action="/api/users/login" method="POST" class="form" role="form">
+                            <form action="/api/users/login" method="POST" class="login" role="form">
                                 <div class="form-group">
-                                    <input id="nameInput" placeholder="name" class="form-control form-control-sm"
+                                    <input name="user" id="nameInput" placeholder="name" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
                                 <div class="form-group">
@@ -87,7 +87,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/api/users/register" method="POST" class="form" role="form">
+                            <form action="/api/users/register" method="POST" class="register" role="form">
                                 <div class="form-group">
                                     <input name="username" id="nameInput" placeholder="name" class="form-control form-control-sm"
                                         type="text" required="">
