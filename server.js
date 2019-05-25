@@ -35,8 +35,6 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -52,9 +50,13 @@ app.use("/api/pois", poisRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = { user: "test"} //test cookie to make header run.
+  let templateVars = { user: ""} //test cookie to make header run.
   res.render("index", templateVars);
 });
+
+app.get("/register", (req, res) => {
+
+})
 
 
 //gets the json object of the matching ID

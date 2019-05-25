@@ -40,7 +40,7 @@
                 </li>
 
                 <li>
-                    </form action="/Logout" , method="POST">
+                    </form name="logout" id="logout" action="Logout" method="POST">
                     <button type="button" class="btn btn-outline-secondary">Logout <span class="caret"></span></button>
                     </form>
                 </li>
@@ -59,13 +59,13 @@
 
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/login" method="POST" class="form" role="form">
+                            <form action="api/users/login" method="POST" class="login" role="form">
                                 <div class="form-group">
-                                    <input id="nameInput" placeholder="name" class="form-control form-control-sm"
+                                    <input name="user" id="usernameInput" placeholder="username" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password"
+                                    <input name="password" id="passwordInput" placeholder="Password"
                                         class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-check">
@@ -88,18 +88,17 @@
 
                 <li class="dropdown order-1">
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown"
-                        class="btn btn-outline-secondary dropdown-toggle">Register <span class="caret"></span>
+                        class="btn btn-outline-secondary dropdown-toggle">Register <span class="caret">
                     </button>
-
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/register" method="POST" class="form" role="form">
+                            <form action="api/users/register" method="POST" class="register" role="form">
                                 <div class="form-group">
-                                    <input id="nameInput" placeholder="name" class="form-control form-control-sm"
+                                    <input name="username" id="nameInput" placeholder="username" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password"
+                                    <input name="pswrd" id="newPasswordInput" placeholder="Password"
                                         class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
