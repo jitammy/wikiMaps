@@ -14,5 +14,26 @@ module.exports = (knex) => {
     });
   });
 
+  router.post("/new", (req, res) => {
+
+    let map = {
+      title: req.body.title,
+      lattitude: req.body.lattitude,
+      longitude: req.body.longitude
+      //user_id:
+    };
+
+    knex("maps")
+    .returning('id')
+    .insert(map)
+    .then((ids) => {
+      res.json({id: ids[0]});
+    })
+
+
+
+  })
+
+
   return router;
 }
