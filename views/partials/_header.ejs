@@ -12,8 +12,8 @@
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
+        <% if(user){ %>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-            <% if(user){ %>
             <!-- if user exist -->
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <form action="/?" method="POST" id="new-point" class="navbar-form navbar-right" role="form">
@@ -24,48 +24,44 @@
                         </span>
                     </div>
                 </form>
-
                 <li class="dropdown">
-                    <button type="button" id="dropdownmymaps" data-toggle="dropdown"
+                    <button type="button" id="dropdown order-1" data-toggle="dropdown"
                         class="btn btn-outline-secondary dropdown-toggle">mymaps<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu list" role="menu"></ul>
                 </li>
-
                 <li class="dropdown">
-                    <button type="button" id="dropdownfavmaps" data-toggle="dropdown"
+                    <button type="button" id="dropdown order-1" data-toggle="dropdown"
                         class="btn btn-outline-secondary dropdown-toggle">favmaps<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu list" role="menu"></ul>
                 </li>
-
                 <li>
-                    </form action="/Logout" , method="POST">
-                    <button type="button" class="btn btn-outline-secondary">Logout <span class="caret"></span></button>
+                    </form action="/api/users/logout" , method="POST">
+                    <button type="submit" class="btn btn-outline-secondary">Logout <span class="caret"></span></button>
                     </form>
                 </li>
-
             </ul>
-            <!-- if no user -->
-            <% } else {%>
+        </div>
+        <!-- if no user -->
+        <% } else {%>
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-
                 <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"></a></li>
-
                 <li class="dropdown order-1">
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown"
-                        class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span>
+                        class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false">Login <span class="caret"></span>
                     </button>
-
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/login" method="POST" class="form" role="form">
+                            <form name="user" action="/api/users/login" method="POST" class="form" role="form">
                                 <div class="form-group">
                                     <input id="nameInput" placeholder="name" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password"
+                                    <input name="password" id="passwordInput" placeholder="Password"
                                         class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-check">
@@ -85,21 +81,19 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="dropdown order-1">
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown"
                         class="btn btn-outline-secondary dropdown-toggle">Register <span class="caret"></span>
                     </button>
-
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                         <li class="px-3 py-2">
-                            <form action="/register" method="POST" class="form" role="form">
+                            <form action="/api/users/register" method="POST" class="form" role="form">
                                 <div class="form-group">
-                                    <input id="nameInput" placeholder="name" class="form-control form-control-sm"
+                                    <input name="username" id="nameInput" placeholder="name" class="form-control form-control-sm"
                                         type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password"
+                                    <input name="pswrd" id="passwordInput" placeholder="Password"
                                         class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
@@ -112,5 +106,5 @@
             </ul>
         </div>
     </div>
+    <% } %>
 </nav>
-<% } %>

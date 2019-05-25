@@ -52,7 +52,7 @@ app.use("/api/pois", poisRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = { user: "test"} //test cookie to make header run.
+  let templateVars = { user: ""} //test cookie to make header run.
   res.render("index", templateVars);
 });
 
@@ -115,7 +115,21 @@ app.get("/maps/:id", (req, res) => {
    res.render("renderMap", {mapId: req.params.id});
 })
 
-
+  
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+
+
+app.get("/maps/new", (req, res)=>{
+  let templateVars = {
+
+  }
+  res.render()
+})
+
+
+
+
+
