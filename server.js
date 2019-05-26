@@ -113,9 +113,15 @@ app.get("/data/:map_id", (req, res) => {
 
 });
 
+app.get("/maps/new", (req, res) => {
+  res.render("newMap")
+});
+
 app.get("/maps/:id", (req, res) => {
    res.render("renderMap", {mapId: req.params.id});
-})
+});
+
+
 
 
 app.listen(PORT, () => {

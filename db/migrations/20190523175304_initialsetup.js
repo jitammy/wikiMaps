@@ -20,7 +20,7 @@ exports.up = function (knex, Promise) {
      table.float('lng', 10, 6).notNullable();
      table.string('title').notNullable();
      table.string('desc').notNullable();
-     table.string('imgurl').notNullable();
+     table.string('imgurl');
      table.integer('map_id').references('id').inTable('maps');
    })
   ])
