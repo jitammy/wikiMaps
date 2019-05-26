@@ -25,9 +25,10 @@ module.exports = (knex) => {
     }
 
     knex("pois")
+      .returning('id')
       .insert(poi)
-      .then(() => {
-        res.send("point added");
+      .then((ids) => {
+        res.json({id: ids[0]});
       })
   })
 

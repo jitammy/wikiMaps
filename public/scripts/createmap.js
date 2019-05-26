@@ -34,7 +34,7 @@ function mapInit() {
 
         newInfo.open(map, marker);
 
-        google.maps.event.addListener(newInfo, 'DOMContentLoaded', function() {
+        google.maps.event.addListener(newInfo, 'domready', function() {
 
           $(".form-container").on("submit", function(e) {
             e.preventDefault();
