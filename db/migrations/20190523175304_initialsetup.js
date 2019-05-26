@@ -11,6 +11,7 @@ exports.up = function (knex, Promise) {
      table.float('lattitude').notNullable();
      table.float('longitude').notNullable();
      table.integer('user_id').references('id').inTable('users');
+     table.specificType('fav_array', 'INT[]');
      table.timestamps();
    }),
 

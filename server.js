@@ -90,7 +90,8 @@ app.get("/data/:map_id", (req, res) => {
               title: singlePoi.title,
               desc: singlePoi.desc,
               lat: singlePoi.lat,
-              lng: singlePoi.lng
+              lng: singlePoi.lng,
+              imgurl: singlePoi.imgurl
             }
             arrPois.push(poi);
           });
@@ -119,7 +120,7 @@ app.get("/maps/new", (req, res) => {
 });
 
 app.get("/maps/:id", (req, res) => {
-   res.render("renderMap", {mapId: req.params.id});
+   res.render("renderMap", {user: req.session.user_id, mapId: req.params.id});
 });
 
 

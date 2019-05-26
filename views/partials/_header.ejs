@@ -6,7 +6,7 @@
             <button type="button" id="allmaps" data-toggle="dropdown"
                 class="btn btn-outline-secondary dropdown-toggle">maps<span class="caret"></span>
             </button>
-            <ul class="dropdown-menu list" role="menu"></ul>
+            <ul class="dropdown-menu list" id="mapslist" role="menu"></ul>
         </li>
         <!-- Toggle button to show other info in nav bar -->
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
@@ -28,7 +28,7 @@
                     <button type="button" id="dropdown order-1" data-toggle="dropdown"
                         class="btn btn-outline-secondary dropdown-toggle">mymaps<span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu list" role="menu"></ul>
+                    <ul class="dropdown-menu list" id="myMaps" role="menu"></ul>
                 </li>
                 <li class="dropdown">
                     <button type="button" id="dropdown order-1" data-toggle="dropdown"
@@ -46,7 +46,6 @@
         <!-- if no user -->
         <% } else {%>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"></a></li>
                 <li class="dropdown order-1">
@@ -108,3 +107,4 @@
     </div>
     <% } %>
 </nav>
+

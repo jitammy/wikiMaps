@@ -21,6 +21,7 @@ module.exports = (knex) => {
       lng: req.body.lng,
       title: req.body.title,
       desc: req.body.desc,
+      imgurl: req.body.imgurl,
       map_id: req.body.map_id
     }
 
