@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const cookieSession = require('cookie-session')
 
 module.exports = (knex) => {
 
@@ -19,8 +20,8 @@ module.exports = (knex) => {
     let map = {
       title: req.body.title,
       lattitude: req.body.lattitude,
-      longitude: req.body.longitude
-      //user_id:
+      longitude: req.body.longitude,
+      user_id: req.session.user_id
     };
 
     knex("maps")
