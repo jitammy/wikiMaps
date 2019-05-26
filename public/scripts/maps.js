@@ -25,38 +25,36 @@ function makeMap(mapRes){
     })(marker, i));
   }
 }
-// $(() => {
-//    var url = window.location.pathname;
-//    var id = url.substring(url.lastIndexOf('/') + 1);
-//   $.ajax({
-//     method: "GET",
-//     url: "/maps/" + id
-//   }).done((map) => {
-//     makeMap(map);
-//   });;
-// })
-//  $(".gmaps").on('click', ".submit_new_map", function(event) {
-//   event.preventDefault();
-//   let title = $("input[name='map_title']").val()
-//   let description = $("textarea[name='map_description']").val()
-//   if(marker){
-//     let lat =  Number(marker.getPosition().lat())
-//     let long = Number(marker.getPosition().lng())
-//   }
-//   let data = {
-//     title: title,
-//     description: description
-//     // img_url: img_url,
-//     // lat: Number(lat),
-//     // long: Number(long),
-//   }
-//   $.ajax({
-//     url:`/maps/new`,
-//     type:'POST',
-//     data: data,
-//     success: function(mapObject) {
-//       loadMap(mapObject)
-//     }
-//   });
-//   toggleDescriptions();
-// });
+
+
+
+
+
+$(() => {
+   var url = window.location.pathname;
+   var id = url.substring(url.lastIndexOf('/') + 1);
+
+  $.ajax({
+    method: "GET",
+    url: "/data/" + id
+  }).done((map) => {
+    makeMap(map);
+  });;
+
+  $(window).click((e) =>{
+    $("#poiPopup").css({left: e.pageX});
+    $("#poiPopup").css({top: e.pageY});
+    $("#poiPopup").show();
+  });
+
+
+  // $.ajax({
+  //   method: "POST",
+  //   url: "/api/pois"
+  // }).done(()=>{
+  //   console.log("successfully posted");
+  // });
+
+
+})
+

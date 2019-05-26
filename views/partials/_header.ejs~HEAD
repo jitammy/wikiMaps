@@ -37,7 +37,7 @@
                     <ul class="dropdown-menu list" role="menu"></ul>
                 </li>
                 <li>
-                    <form class="logout" action="/api/users/logout" , method="POST">
+                    </form class="logout" action="/api/users/logout" , method="POST">
                     <button type="submit" class="btn btn-outline-secondary">Logout <span class="caret"></span></button>
                     </form>
                 </li>
@@ -46,7 +46,6 @@
         <!-- if no user -->
         <% } else {%>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"></a></li>
                 <li class="dropdown order-1">

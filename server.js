@@ -113,9 +113,16 @@ app.get("/data/:map_id", (req, res) => {
 
 });
 
+app.get("/maps/new", (req, res) => {
+  let templateVars = { user: req.session.user_id} //test cookie to make header run.
+  res.render("newMap", templateVars)
+});
+
 app.get("/maps/:id", (req, res) => {
    res.render("renderMap", {mapId: req.params.id});
-})
+});
+
+
 
 
 app.listen(PORT, () => {
