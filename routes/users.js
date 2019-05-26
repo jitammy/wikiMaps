@@ -62,10 +62,16 @@ module.exports = (knex) => {
         .returning('id')
         .then((ids) => {
           req.session.user_id = ids[userIndex].id;
-          res.send("Logged in with cookie")
+          res.redirect("/")
       })
       }
     })
   });
+
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.redirect("/")
+  });
+
   return router;
 }
