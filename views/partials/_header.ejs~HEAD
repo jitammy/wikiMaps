@@ -46,7 +46,6 @@
         <!-- if no user -->
         <% } else {%>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"></a></li>
                 <li class="dropdown order-1">
