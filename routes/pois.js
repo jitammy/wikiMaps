@@ -21,8 +21,7 @@ module.exports = (knex) => {
       lng: req.body.lng,
       title: req.body.title,
       desc: req.body.desc,
-      map_id: req.body.map_id,
-      user_id: req.sesseion.user_id
+      map_id: req.body.map_id
     }
 
     knex("pois")
