@@ -30,11 +30,6 @@ module.exports = (knex) => {
     .then((ids) => {
       res.json({id: ids[0]});
     })
-
-
-
   })
-
-
   return router;
 }

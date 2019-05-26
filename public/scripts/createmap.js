@@ -21,15 +21,28 @@ function mapInit() {
         google.maps.event.addListener(marker, "click", (event) => {
           var newInfo = new google.maps.InfoWindow({
             content:
-              '<form class="form-container">' +
-              '<p>Title</p>' +
-              '<input type="text" name="title" placeholder="Name your hotspot">' +
-              '<p>Description</p>' +
-              '<input type="text" name="desc" placeholder="Enter a Description">' +
-              '<input name="lat" type="hidden" value="'+ location.lat() + '"/>' +
-              '<input name="lng" type="hidden" value="'+ location.lng() + '"/>' +
-              '<button type="submit">Create</button>' +
-              '</form>'
+            ` <ul class="px-3 py-2">
+             <form class="form-container">
+             <div class="form-group">
+                  <input name="title"  placeholder="Name your hotspot" class="form-control form-control-sm"
+                                                     type="text" required="">
+             </div>
+             <div class="form-group">
+                      <input name="desc" placeholder="Enter a Description" class="form-control form-control-sm" type="text" required="">
+             </div>
+             <div class="form-group">
+             <input name="imgurl" placeholder="Enter a image link" class="form-control form-control-sm" type="text" required="">
+
+
+
+             </div>
+                     <input name="lat" type="hidden" value="${location.lat()}"/>
+                      <input name="lng" type="hidden" value="${location.lng()}"/>
+             <div class="form-group">
+                 <button type="submit" class="btn btn-primary btn-block">Create</button>
+             </div>
+             </form>
+             </ul>`
           });
 
         newInfo.open(map, marker);
@@ -40,10 +53,11 @@ function mapInit() {
             e.preventDefault();
             var poiData = $(this).serializeArray();
             var newPoi = {
-              lat: poiData[2].value,
-              lng: poiData[3].value,
+              lat: poiData[3].value,
+              lng: poiData[4].value,
               title: poiData[0].value,
-              desc: poiData[1].value
+              desc: poiData[1].value,
+              imgurl: poiData[2].value
             };
             arrPois.push(newPoi);
             console.log(arrPois);
@@ -80,6 +94,7 @@ $(() => {
     }).then((res) => {
       arrPois.forEach((poi)=>{
         var mapid = res.id;
+        console.log(poi);
         postingPois(poi, mapid);
       })
     });
@@ -96,7 +111,8 @@ function postingPois(poi, mapid) {
       lng: poi.lng,
       title: poi.title,
       desc: poi.desc,
-      map_id: mapid
+      map_id: mapid,
+      imgurl: poi.imgurl
     }
   }).then(()=> {
     console.log("success")
