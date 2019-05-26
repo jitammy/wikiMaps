@@ -69,8 +69,7 @@ module.exports = (knex) => {
   });
 
   router.post("/logout", (req, res) => {
-    req.session.user_id = null;
-    res.clearCookie('mlcl')
+    req.session = null;
     res.redirect("/")
   });
 
