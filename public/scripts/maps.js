@@ -84,6 +84,10 @@ function makeMap(mapRes){
       }
     })(marker, i));
   }
+
+
+
+
 }
 
 
