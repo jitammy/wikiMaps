@@ -11,7 +11,11 @@ module.exports = (knex) => {
       .select("*")
       .from("maps")
       .then((results) => {
-        res.json(results);
+        const returnData = {
+          results,
+          id: req.session.user_id
+        }
+        res.json(returnData);
     });
   });
 
@@ -30,6 +34,11 @@ module.exports = (knex) => {
     .then((ids) => {
       res.json({id: ids[0]});
     })
+
+
+
   })
+
+
   return router;
 }

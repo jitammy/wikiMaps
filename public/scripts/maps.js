@@ -44,47 +44,47 @@ function makeMap(mapRes){
           + '<button class="delete" >Delete</button>')
         infowindow.open(map, marker);
         google.maps.event.addListener(infowindow, 'domready', function(){
-          $(".edit").on("click", function(ev){
+          $(".delete").on("click", function(ev){
             ev.preventDefault();
-            infowindow.setContent(
-              ` <ul class="px-3 py-2">
-             <form class="form-container">
-             <div class="form-group">
-                  <input name="title"  placeholder="Name your hotspot" class="form-control form-control-sm"
-                                                     type="text" required="">
-             </div>
-             <div class="form-group">
-                      <input name="desc" placeholder="Enter a Description" class="form-control form-control-sm" type="text" required="">
-             </div>
-             <div class="form-group">
-             <input name="imgurl" placeholder="Enter a image link" class="form-control form-control-sm" type="text" required="">
+            var poiID = mapRes.arrPois[i].id;
+            $.ajax({
+              url: '/pois/' + poiID,
+              method: "DELETE",
+              success: function(){
+                console.log("deleted point")
+                window.location.reload();
+              }
+            })
+            // infowindow.setContent(
+            //   ` <ul class="px-3 py-2">
+            //  <form class="form-container">
+            //  <div class="form-group">
+            //       <input name="title"  placeholder="Name your hotspot" class="form-control form-control-sm"
+            //                                          type="text" required="">
+            //  </div>
+            //  <div class="form-group">
+            //           <input name="desc" placeholder="Enter a Description" class="form-control form-control-sm" type="text" required="">
+            //  </div>
+            //  <div class="form-group">
+            //  <input name="imgurl" placeholder="Enter a image link" class="form-control form-control-sm" type="text" required="">
 
 
 
-             </div>
-                     <input name="lat" type="hidden" value="${mapRes.arrPois[i].lat}"/>
-                      <input name="lng" type="hidden" value="${mapRes.arrPois[i].lng}"/>
-             <div class="form-group">
-                 <button type="submit" class="update">Update</button>
-             </div>
-             </form>
-             </ul>`
-              );
-
-
+            //  </div>
+            //          <input name="lat" type="hidden" value="${mapRes.arrPois[i].lat}"/>
+            //           <input name="lng" type="hidden" value="${mapRes.arrPois[i].lng}"/>
+            //  <div class="form-group">
+            //      <button type="submit" class="update">Update</button>
+            //  </div>
+            //  </form>
+            //  </ul>`
+            //   );
           });
-
-          // $(".update").on("click", 'domready', function(evn){
-          //     debugger;
-          //     evn.preventDefault();
-          //     alert("ples work");
-          //   })
         })
       }
     })(marker, i));
-
-
   }
+
 
 
 

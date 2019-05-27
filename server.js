@@ -87,6 +87,7 @@ app.get("/data/:map_id", (req, res) => {
           var arrPois = [];
           resPoints.forEach((singlePoi) => {
             var poi = {
+              id: singlePoi.id,
               title: singlePoi.title,
               desc: singlePoi.desc,
               lat: singlePoi.lat,
@@ -123,7 +124,15 @@ app.get("/maps/:id", (req, res) => {
    res.render("renderMap", {user: req.session.user_id, mapId: req.params.id});
 });
 
-
+app.delete("/pois/:id", (req, res) => {
+  var poiID = req.params.id;
+  knex('pois')
+    .where({id: poiID})
+    .del()
+    .then(() => {
+      ;
+    })
+});
 
 
 app.listen(PORT, () => {
