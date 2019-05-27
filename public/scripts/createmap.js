@@ -97,6 +97,7 @@ $(() => {
         console.log(poi);
         postingPois(poi, mapid);
       })
+      window.location.replace('/maps/' + res.id);
     });
   });
 
